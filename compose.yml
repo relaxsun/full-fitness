@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    container_name: "app-container"
+    container_name: app-container
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
@@ -9,7 +9,7 @@ services:
       - ./src:/workspace
       - ./docker/app/php.ini:/usr/local/etc/php/php.ini
   web:
-    container_name: "web-comtainer"
+    container_name: web-comtainer
     build:
       context: .
       dockerfile: ./docker/web/Dockerfile
@@ -19,3 +19,15 @@ services:
       - APP_HOST=app
     volumes:
       - ./src:/wordspace
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    container_name: db-container
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=secret
