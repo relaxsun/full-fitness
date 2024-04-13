@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS `onestop_test`;
+CREATE DATABASE IF NOT EXISTS `test_table`;
