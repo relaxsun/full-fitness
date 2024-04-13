@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    container_name: "app-container"
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - ./src:/workspace
+      - ./docker/app/php.ini:/usr/local/etc/php/php.ini
