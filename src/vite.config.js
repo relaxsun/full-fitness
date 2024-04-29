@@ -12,4 +12,13 @@ export default defineConfig({
     optimizeDeps: {
         entries: [],
     },
+    server: {
+        host: true,
+        hmr: {
+            host: "localhost",
+        },
+        watch: {
+            usePolling: true,
+        },
+    },
 });
